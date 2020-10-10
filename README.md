@@ -87,15 +87,18 @@ In ``` /etc/dovecot/conf.d/10-mail.conf```
 In ``` /etc/dovecot/conf.d/10-master.conf```
 •	Comment all the lines from default service auth paragraph
 •	Add the following lines to the end of the file:
-```service auth {
+```
+service auth {
         unix_listener /var/spool/postfix/private/auth {
                 mode = 0660
                 user = postfix
                 group = postfix
         }
-}```
+}
+```
 
-In ```/etc/dovecot/conf.d/10-auth.conf```
+In 
+```/etc/dovecot/conf.d/10-auth.conf```
 •	Uncomment and set ```disable_plaintext_auth``` to no
 In main.cf [postfix] add the following:
 •	smtpd_sasl_type = dovecot
@@ -103,15 +106,18 @@ In main.cf [postfix] add the following:
 •	smtpd_sasl_auth_enable = yes
 
 Restart both postfix and dovecot: 
-```sudo service postfix restart 
-sudo service dovecot restart```
+```
+sudo service postfix restart 
+sudo service dovecot restart
+```
 
 Generate ssl cert and enable IMAPS
 Get certbot: ```sudo apt install certbot``` 
 Make certificate: ```sudo certbot certonly --standalone -d host.domain.com ```
 *ensure that the hostname matches the one that acts as your dns (unclouded) not just domain.com! Dovecot will fail to start otherwise.
 In ```/etc/dovecot/conf.d/10-master.conf``` ensure the config looks like the following
-```service imap-login {
+```
+service imap-login {
   inet_listener imap {
     port = 143
   } 
@@ -119,5 +125,6 @@ In ```/etc/dovecot/conf.d/10-master.conf``` ensure the config looks like the fol
     port = 993
     ssl = yes
   }
-}```
+}
+```
 
