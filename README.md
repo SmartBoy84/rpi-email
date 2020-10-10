@@ -72,10 +72,13 @@ Add the following the bottom of the main.cf file:
 ```smtpd_helo_restrictions = permit_mynetworks, permit_sasl_authenticated, reject_invalid_helo_hostname, reject_non_fqdn_helo_hostname, reject_unknown_helo_hostname, check_helo_access hash:/etc/postfix/helo_access```
 
 Create helo_access file in ```/etc/postfix/helo_access``` and add the following to it
-•	X.X.X.X   REJECT
-•	domain.com   REJECT
-•	smtp.domain.com   REJECT
-•	mail.domain.com   REJECT
+```
+X.X.X.X   REJECT
+domain.com   REJECT
+smtp.domain.com   REJECT
+mail.domain.com   REJECT
+```
+Create database for helo file: ```postmap helo_access```
 *replace x.x.x.x with your ip
 Restart: ``` sudo service postfix restart```
 
