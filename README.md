@@ -162,4 +162,104 @@ mv -r [roundcube folder] /var/www/roundcube
 
 At this point setup roundcube in apache config however you want but I’ll tell you how I did it
 
+In ```/etc/dovecot/conf.d/10-ssl.conf``` set SSL to yes
+Uncomment and set the certificate locations as followed:
+```
+ssl_cert = </etc/letsencrypt/live/host.domain.com /fullchain.pem
+ssl_key = </etc/letsencrypt/live/ host.domain.com /privkey.pem
+```
+Restart dovecot: ``` sudo service dovecot restart```
+
+Setup Roundcube and MySQL server
+Get mariadb: ```sudo apt-get install mariadb-server```
+Run ``` mysql_secure_installation``` to setup the database – follow the instructions
+Create roundcube user and database:
+```
+sudo mysql -uroot
+CREATE USER 'roundcube'@'localhost' IDENTIFIED BY 'password'; [set password to whatever you wish]
+CREATE DATABASE roundcubemail;
+GRANT ALL PRIVILEGES ON roundcubemail.* to 'roundcube'@'localhost';
+FLUSH PRIVILEGES;
+Quit
+```
+
+Install roundcube:
+Get dependencies:
+``` sudo apt-get install apache2 mariadb-server php7.2 php7.2-gd php-mysql php7.2-curl php7.2-zip php7.2-ldap php7.2-mbstring php-imagick php7.2-intl php7.2-xml unzip wget curl -y
+```wget https://github.com/roundcube/roundcubemail/releases/download/1.4.9/roundcubemail-1.4.9-complete.tar.gz```
+tar xfz roundcubemail-*.tar.gz
+mv -r [roundcube folder] /var/www/roundcube
+```
+
+At this point setup roundcube in apache config however you want but I’ll tell you how I did it
+Add the following to /etc/apache2/sites-available/domain.com
+```
+<VirtualHost *:443>
+ServerName mail.gabba.ga
+DocumentRoot /var/www/roundcube
+SSLEngine on
+    SSLCertificateFile /etc/apache2/ssl/gabba.ga.pem
+    SSLCertificateKeyFile /etc/apache2/ssl/gabba.ga.key
+
+
+<Directory /var/www/roundcube/>
+  Options +FollowSymLinks
+  # This is needed to parse /var/lib/roundcube/.htaccess. See its
+  # content before setting AllowOverride to None.
+  AllowOverride All
+  <IfVersion >= 2.3>
+    Require all granted
+  </IfVersion>
+  <IfVersion < 2.3>
+    Order allow,deny
+    Allow from all
+  </IfVersion>
+</Directory>
+
+# Protecting basic directories:
+<Directory /var/www/roundcube/config>
+        Options -FollowSymLinks
+        AllowOverride None
+</Directory>
+
+<Directory /var/www/roundcube/temp>
+        Options -FollowSymLinks
+        AllowOverride None
+        <IfVersion >= 2.3>
+          Require all denied
+        </IfVersion>
+        <IfVersion < 2.3>
+          Order allow,deny
+          Deny from all
+        </IfVersion>
+</Directory>
+
+<Directory /var/www/roundcube/logs>
+        Options -FollowSymLinks
+        AllowOverride None
+        <IfVersion >= 2.3>
+          Require all denied
+        </IfVersion>
+        <IfVersion < 2.3>
+          Order allow,deny
+          Deny from all
+        </IfVersion>
+</Directory>
+</VirtualHost>
+```
+Then remove the default site: ```rm 000*```
+Activate new site
+```
+a2ensite domain.com
+Sudo service apache2 restart
+```
+
+Install roundcube by going to mail.domain.com/installer
+
+Follow: https://www.linode.com/docs/email/postfix/configure-spf-and-dkim-in-postfix-on-debian-8/
+To stop emails from going to spam folder
+Receiving emails from gmail is a bit scuffed rn
+Bye
+
+
 
