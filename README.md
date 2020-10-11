@@ -258,8 +258,21 @@ Install roundcube by going to mail.domain.com/installer
 
 Follow: https://www.linode.com/docs/email/postfix/configure-spf-and-dkim-in-postfix-on-debian-8/
 To stop emails from going to spam folder
-Receiving emails from gmail is a bit scuffed rn
-Bye
 
+I was not able to receive emails from GMail and looking at the logs told me that it was because postfix was not using TLS. This was because of mismatching certificates. I solved this by doing the following:
+First check if you have the same problem by doing:
+```
+sudo -i
+(openssl x509 -noout -modulus -in /etc/ssl/certs/ssl-cert-snakeoil.pem | openssl md5 ; openssl rsa -noout -modulus -in /etc/ssl/private/ssl-cert-snakeoil.key | openssl md5) | uniq
+```
+If this command results in two different hashes for the .key .pem file it means the certificates are not matching and you have to regenerate them which you can do by using this command:
+```sudo make-ssl-cert generate-default-snakeoil --force-overwrite```
+Restart postfix: ```sudo service postfix restart```
 
+VOILA! You now have a fully-featured, fully-functioning email server running on your pi!
 
+Sidenotes:
+Ensure that you update your ip on cloudflare whenever it changes
+It's obvious but in case you didn't now, you won't receive any emails if the pi is offline - there isn't some offshort reservoir that keeps your emails until you turn the pi back on! ;=)
+
+Bye.
