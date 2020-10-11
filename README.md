@@ -1,4 +1,4 @@
-Just a bit of documentation on how I managed to setup a fully functional email server on my pi.
+Just a bit of documentation on how I managed to setup a fully functional email server on my pi.  
 Prenote - This setup works seemlessly with my previously setup apache server with it's own domain powered by cloudflare.
 
 My email server is comprised of 4 programs:
