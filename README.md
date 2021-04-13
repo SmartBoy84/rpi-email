@@ -119,7 +119,7 @@ Get certbot: ```sudo apt install certbot```
 Make certificate: ```sudo certbot certonly --standalone -d host.domain.com ```  
 *ensure that the hostname matches the one that acts as your dns (unclouded) not just domain.com! Dovecot will fail to start otherwise.  
 Certbot by default relies on http verification which means that you need to have port 80 exposed (port forwarded)
-If this is not feasible, then another option is to use the '--preferred-challenges dns' flag. Certbot will prompt you to add a DNS TEXT record
+If this is not feasible, then another option is to ```certbot --manual --preferred-challenges dns certonly -d host.domain.com```. (Certbot will prompt you to add a DNS TEXT record)
 
 In ```/etc/dovecot/conf.d/10-master.conf``` ensure the config looks like the following  
 ```  
