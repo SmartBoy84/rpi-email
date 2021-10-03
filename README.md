@@ -264,4 +264,7 @@ Any other problems you encounter will likely be due to you following steps from 
 Use the following to test how "spammy" (how likely it is to be marked as spam) your email is
 https://www.mail-tester.com/
 
+https://jichu4n.com/posts/setting-up-dkim-and-srs-in-postfix/
+This is very helpful
+
 Bye.  
