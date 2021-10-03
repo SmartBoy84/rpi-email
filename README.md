@@ -249,4 +249,8 @@ Ensure that you update your ip on cloudflare whenever it changes
 It's obvious but in case you didn't now, you won't receive any emails if the pi is offline - there isn't some offshort reservoir that keeps your emails until you turn the pi back on! ;=)  
 You need to regularly refresh your lets-encrypt certificates with the same command you used to create them (expiry is 90 dates I think - crontab?)
   
+Wup, who'da thoght you need php to get an application written in php to work, follow this guide:
+https://www.howtoforge.com/tutorial/ubuntu-roundcube-latest/#configure-apache-for-roundcube
+They also have a smaller config for apache
+  
 Bye.  
