@@ -232,7 +232,7 @@ Install roundcube by going to mail.domain.com/installer
 Follow: https://jichu4n.com/posts/custom-domain-e-mails-with-postfix-and-gmail-the-missing-tutorial/  
 To stop emails from going to spam folder  
 You also need to set up a PTR record and add "smtp_tls_security_level = may" to encrypt outbound messages (in main.cf)
-
+So, the three main things to prevent your emails from being marked as spam are encrypting outbound messages, signing emails using DKIM, an SPF record and a DMARC record
 I was not able to receive emails from GMail and looking at the logs told me that it was because postfix was not using TLS. This was because of mismatching certificates. I solved this by doing the following:  
 First check if you have the same problem by doing:  
 ```  
