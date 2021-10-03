@@ -231,6 +231,7 @@ Install roundcube by going to mail.domain.com/installer
   
 Follow: https://www.linode.com/docs/email/postfix/configure-spf-and-dkim-in-postfix-on-debian-8/  
 To stop emails from going to spam folder  
+You also need to set up a PTR record and add "smtp_tls_security_level = may" to encrypt outbound messages (in main.cf)
   
 I was not able to receive emails from GMail and looking at the logs told me that it was because postfix was not using TLS. This was because of mismatching certificates. I solved this by doing the following:  
 First check if you have the same problem by doing:  
