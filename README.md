@@ -229,7 +229,7 @@ Sudo service apache2 restart
   
 Install roundcube by going to mail.domain.com/installer  
   
-Follow: https://www.linode.com/docs/email/postfix/configure-spf-and-dkim-in-postfix-on-debian-8/  
+Follow: https://jichu4n.com/posts/custom-domain-e-mails-with-postfix-and-gmail-the-missing-tutorial/  
 To stop emails from going to spam folder  
 You also need to set up a PTR record and add "smtp_tls_security_level = may" to encrypt outbound messages (in main.cf)
 
