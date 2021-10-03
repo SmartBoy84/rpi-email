@@ -261,4 +261,7 @@ The other problems you'll encounter will be with dovecot, just do service status
 MAJOR PROBLEM: WHEN CREATING CERTIFICATES FOR DOVECOT MAKE SURE YOU MAKE THEM FOR THE UNPROXIED DNS RECORD (NOT domain.com OR mail.domain.com) AND THIS REQUIRED PORT 80 TO BE OPENED FOR CERTBOT TO VERIFY
 Any other problems you encounter will likely be due to you following steps from other sites concurrently or skipping over steps, I can verify that following this guide step by step will work
   
+Use the following to test how "spammy" (how likely it is to be marked as spam) your email is
+https://www.mail-tester.com/
+
 Bye.  
