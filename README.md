@@ -272,4 +272,5 @@ If you've done everything right then you should get a score of 8.9 on mail-test 
 Wanna be cool? Add a BIMI record to display your own icon for almost all big email clients (gmail, outlook, yahoo etc)
 https://help.returnpath.com/hc/en-us/articles/360029588491-How-to-implement-Brand-Indicators-for-Message-Identification-BIMI-on-my-emails
 *Make sure to do quarantine in your dmarc record
-Bye.  
+Screw it, turns out to display profile icon in gmail you need a Verified Mark Certificate which cost $1500 - gulp
+Bye.
