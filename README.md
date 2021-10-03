@@ -268,4 +268,8 @@ https://jichu4n.com/posts/setting-up-dkim-and-srs-in-postfix/
 This is very helpful
 
 If you've done everything right then you should get a score of 8.9 on mail-test and not be marked as spam by outlook and gmail
+
+Wanna be cool? Add a BIMI record to display your own icon for almost all big email clients (gmail, outlook, yahoo etc)
+https://help.returnpath.com/hc/en-us/articles/360029588491-How-to-implement-Brand-Indicators-for-Message-Identification-BIMI-on-my-emails
+*Make sure to do quarantine in your dmarc record
 Bye.  
