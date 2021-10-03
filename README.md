@@ -256,5 +256,8 @@ https://www.howtoforge.com/tutorial/ubuntu-roundcube-latest/#configure-apache-fo
 They also have a smaller config for apache
 
 The other problems you'll encounter will be with dovecot, just do service status dovecot to troubleshoot gl
+
+MAJOR PROBLEM: WHEN CREATING CERTIFICATES FOR DOVECOT MAKE SURE YOU MAKE THEM FOR THE UNPROXIED DNS RECORD (NOT domain.com OR mail.domain.com) AND THIS REQUIRED PORT 80 TO BE OPENED FOR CERTBOT TO VERIFY
+Any other problems you encounter will likely be due to you following steps from other sites concurrently or skipping over steps, I can verify that following this guide step by step will work
   
 Bye.  
