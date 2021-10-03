@@ -267,4 +267,5 @@ https://www.mail-tester.com/
 https://jichu4n.com/posts/setting-up-dkim-and-srs-in-postfix/
 This is very helpful
 
+If you've done everything right then you should get a score of 8.9 on mail-test and not be marked as spam by outlook and gmail
 Bye.  
