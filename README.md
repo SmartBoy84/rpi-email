@@ -33,7 +33,7 @@ In /etc/postfix/main.cf
 •	Set ```inet_protocols``` to ipv4 instead of all [```inet_protocols = ipv4```]  
 •	Set ```myhostname``` to your domain [```myhostname = domain.com```]  
 Add the following lines to the bottom of the file:  
-•	home_mailbox = Mailbox/   
+•	home_mailbox = Maildir/   
 •	mailbox_command =  
   
 If you are on a local host, it is extremely likely that your ISP block outbound requests from port 25 so you will have to setup a custom smtp relay.   
