@@ -1,7 +1,8 @@
 ## WARNING
 If you can't tell, this guide is literally broken - you will *not* get a working email server after following the instructions  
-My current setup is [maddy](https://github.com/foxcpp/maddy) as the email server and [snappymail](https://github.com/the-djmaze/snappymail) as the frontend - everything *just* works
-Outbound mail won't work as Maddy uses custom submission ports (not port 25), change this in SnappyMail > admin > Domains > Add Domain
+My current setup is [maddy](https://github.com/foxcpp/maddy) as the email server and [snappymail](https://github.com/the-djmaze/snappymail) as the frontend - everything *just* works  
+Outbound mail won't work as Maddy uses custom submission ports (not port 25), change this in SnappyMail > admin > Domains > Add Domain   
+SMTP is tls at port 465 - NOT plain 25
 
 ## Instructions
 Just a bit of documentation on how I managed to setup a fully functional email server on my pi.  
