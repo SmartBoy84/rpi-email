@@ -1,3 +1,8 @@
+## WARNING
+If you can't tell, this guide is literally broken - you will *not* get a working email server after following the instructions  
+My current setup is [maddy](https://github.com/foxcpp/maddy) as the email server and [snappymail](https://github.com/the-djmaze/snappymail) as the frontend - everything *just* works
+
+## Instructions
 Just a bit of documentation on how I managed to setup a fully functional email server on my pi.  
 Prenote - This setup works seemlessly with my previously setup apache server with it's own domain powered by cloudflare.
 
